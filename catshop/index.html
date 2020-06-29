@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+    <title>catshop</title>
+  </head>
+  <body>
+    <div class="wrapper">
+    <!-- トップ画像 -->
+    <div class="top">
+      <img src="./images/top.jpg" alt="トップ画像" />
+    </div>
+
+    <!-- ナビゲーション -->
+    <nav>
+      <div class="inner">
+        <div class="flex">
+          <div class="nav-left">
+            <div class="logo"><img src="./images/logo.png" alt="ロゴ" /></div>
+            <p>猫ちゃん専門ショップ</p>
+          </div>
+          <div class="nav-right">
+            <ul>
+              <li><a href="#info">お知らせ</a></li>
+              <li><a href="#cats">猫ちゃんたち</a></li>
+              <li><a href="#inquiry">お問い合わせ</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- お知らせ -->
+    <div id="info">
+      <h1>お知らせ</h1>
+      <p>こちらのお知らせはサンプルです。</p>
+      <p>こちらのお知らせはサンプルです。</p>
+      <p>こちらのお知らせはサンプルです。</p>
+      <p>こちらのお知らせはサンプルです。</p>
+    </div>
+    <!-- 猫ちゃんたち -->
+    <div id="cats">
+      <div id="cats-lists" class="inner">
+        <h1>おすすめ猫ちゃんたち</h1>
+        <div class="btn">
+        <button @click="all()">
+          <img src="./images/logo.png" alt="ロゴ" />全て
+        </button>
+        <button @click="listChange('brown')">
+          <img src="./images/logo.png" alt="ロゴ" />茶色
+        </button>
+        <button @click="listChange('gray')">
+          <img src="./images/logo.png" alt="ロゴ" />灰色
+        </button>
+        <button @click="listChange('white')">
+          <img src="./images/logo.png" alt="ロゴ" />白色
+        </button>
+        <button @click="listChange('kitten')">
+          <img src="./images/logo.png" alt="ロゴ" />子猫
+        </button>
+        <button @click="listChange('cat')">
+          <img src="./images/logo.png" alt="ロゴ" />成猫
+        </button>
+      </div>
+        <ul>
+          <li v-for="cat in cats" :class="cat[3]">
+            <div><img :src="cat[0]" alt="猫画像" /></div>
+            <p>{{cat[1]}}</p>
+            <p>{{cat[2]}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- お問い合わせ -->
+    <div id="inquiry">
+      <div class="inner">
+        <h1>お問い合わせ</h1>
+        <form action="#" method="post">
+          <div class="name">
+            <label for="name">お名前：</label>
+            <input type="text" name="name" required />
+          </div>
+          <div class="email">
+            <label for="email">E-MAIL：</label>
+            <input type="email" name="email" required />
+          </div>
+          <div class="text-inquiry">
+            <textarea
+              name="inquiry-content"
+              id="inquiry-content"
+              placeholder="お問い合わせ内容"
+            ></textarea>
+          </div>
+          <div class="submit">
+            <input type="submit" disabled></input>  <!-- 作動しないようdisabled -->
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- フッター -->
+    <footer>
+      <div class="footer-content inner">
+        <div class="logo"><img src="./images/logo.png" alt="ロゴ" />
+          <p>猫ちゃん専門ショップ</p></div>
+        <ul>
+          <li><a href="#info">お知らせ</a></li>
+          <li><a href="#cats">猫ちゃんたち</a></li>
+          <li><a href="#inquiry">お問い合わせ</a></li>
+        </ul>
+        <div class="copy">
+          <p>Copyright &copy; 2020 Kyohei Matsushita. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+    <script src="main.js"></script>
+  </body>
+</html>

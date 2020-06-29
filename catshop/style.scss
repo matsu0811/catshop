@@ -1,0 +1,417 @@
+// フォント
+$title: "Nico Moji";
+$mincho: "New Time Roman", "ヒラギノ明朝 Pro";
+$gothic: "Meiryo", "ヒラノギ角ゴシック";
+
+// レスポンシブ scss
+
+$screen-xl: 1199px;
+$screen-l: 991px;
+$screen-md: 767px;
+$screen-s: 575px;
+$screen-xs: 320px;
+$bp-list: (
+  xs: screen and
+    (
+      max-width: #{$screen-xs},
+    ),
+  s: screen and
+    (
+      max-width: #{$screen-s},
+    ),
+  md: screen and
+    (
+      max-width: #{$screen-md},
+    ),
+  l: screen and
+    (
+      max-width: #{$screen-l},
+    ),
+  xl: screen and
+    (
+      max-width: #{$screen-xl},
+    ),
+) !default;
+@mixin media($bp-key) {
+  @media #{map-get($bp-list, $bp-key)} {
+    @content;
+  }
+}
+
+// base css
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+h1 {
+  font: {
+    size: 45px;
+    family: $title;
+  }
+  margin: 0;
+  padding: 20px 0;
+}
+
+li {
+  font-family: $gothic;
+}
+
+.wrapper {
+  padding-bottom: 200px;
+}
+
+.inner {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+
+  @include media(md) {
+    width: 100%;
+  }
+}
+
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+// トップ画像
+.top {
+  width: 100%;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    vertical-align: bottom;
+  }
+}
+
+// ナビゲーション
+nav {
+  height: 75px;
+  border-bottom: 2px solid black;
+  font-size: 20px;
+
+  @include media(l) {
+    height: 55px;
+    font-size: 15px;
+  }
+
+  @include media(s) {
+    height: 30px;
+    font-size: 8px;
+  }
+
+  @include media(xs) {
+    font-size: 5px;
+  }
+
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .nav-left {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      .logo {
+        margin-right: 18px;
+        padding-top: 4px;
+
+        @include media(md) {
+          margin-right: 10px;
+        }
+
+        @include media(s) {
+          margin-right: 3px;
+          padding-top: 2px;
+        }
+
+        img {
+          @include media(s) {
+            width: 10px;
+          }
+        }
+      }
+
+      p {
+        font-family: $title;
+      }
+    }
+
+    .nav-right {
+      ul {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      li {
+        list-style: none;
+        margin-left: 50px;
+        list-style: none;
+
+        @include media(md) {
+          margin-left: 20px;
+        }
+
+        @include media(s) {
+          margin-left: 5px;
+        }
+
+        @include media(xs) {
+          margin-left: 2px;
+        }
+
+        a {
+          color: black;
+          display: inline-block;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+      }
+
+      li:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+// お知らせ
+
+#info {
+  background: {
+    image: url(./images/info-bg.jpg);
+    size: cover;
+    repeat: no-repeat;
+  }
+  text-align: center;
+  padding-bottom: 15px;
+
+  p {
+    font: {
+      family: $mincho;
+      size: 15px;
+    }
+    margin: 0;
+    padding-bottom: 15px;
+  }
+}
+
+// 猫ちゃんたち
+
+#cats {
+  background: {
+    image: url(./images/bg.jpg);
+    size: cover;
+    repeat: no-repeat;
+  }
+  padding-bottom: 15px;
+
+  #cats-lists {
+    padding-bottom: 0;
+
+    h1 {
+      @include media(s) {
+        font-size: 30px;
+        text-align: center;
+      }
+    }
+
+    .btn {
+      @include media(s) {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+
+      button {
+        width: 80px;
+        height: 30px;
+        margin-right: 10px;
+        font-size: 16px;
+
+        @include media(s) {
+          margin-bottom: 10px;
+        }
+
+        &:first-of-type {
+          margin-left: 95px;
+
+          @include media(l) {
+            margin-left: 0;
+          }
+
+          @include media(s) {
+            margin-bottom: 0;
+          }
+        }
+
+        img {
+          width: 30%;
+          padding-right: 3px;
+        }
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding: 20px 0;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+
+      @include media(md) {
+        justify-content: center;
+      }
+
+      li {
+        font-size: 20px;
+        list-style: none;
+        overflow: hidden;
+        margin: 15px 0 15px 95px;
+
+        @include media(md) {
+          margin-left: 0;
+        }
+
+        div {
+          cursor: pointer;
+
+          img {
+            border-radius: 10px;
+          }
+
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// お問い合わせ
+#inquiry {
+  font-family: $mincho;
+  padding-bottom: 15px;
+
+  h1 {
+    text-align: center;
+  }
+
+  div {
+    font-size: 16px;
+    margin-bottom: 15px;
+
+    input[type="text"] {
+      width: 15%;
+    }
+
+    input[type="email"] {
+      width: 30%;
+    }
+
+    textarea {
+      width: 90%;
+      height: 100px;
+    }
+
+    & .submit {
+      text-align: center;
+
+      input[type="submit"] {
+        width: 40%;
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+// フッター
+
+footer {
+  width: 100%;
+  height: 200px;
+  background-color: rgba(130, 182, 74, 0.7);
+  vertical-align: bottom;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  .logo {
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    img {
+      margin-right: 10px;
+    }
+
+    p {
+      font-family: $title;
+      margin: 15px 0;
+    }
+  }
+
+  ul {
+    margin: 0 0 0 10px;
+
+    li {
+      list-style: none;
+      margin-bottom: 5px;
+
+      a {
+        color: black;
+      }
+
+      a:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .copy {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+
+    @include media(s) {
+      margin-top: 28px;
+    }
+
+    p {
+      font: {
+        family: $mincho;
+        size: 15px;
+      }
+      margin: 0;
+
+      @include media(md) {
+        font-size: 12px;
+      }
+    }
+  }
+}
